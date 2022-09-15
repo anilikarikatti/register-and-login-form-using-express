@@ -9,11 +9,11 @@
 <body>
     {% block content %}
 
-      
+        <!-- <form action="/registerUser" method="post"> -->
             user name<input type="text" id="username" placeholder="username">
             password <input type="password" id="password" placeholder="password">
             <button type="submit">submit</button>
-      
+        <!-- </form> -->
 
     {% endblock %}
     <script>
@@ -26,7 +26,7 @@
             console.log(username,password);
             let result  = await fetch('/registerUser',{
                 method:"post",
-                header:{
+                headers:{
                     "Content-type":"application/json"
                 },
                 body:JSON.stringify({
