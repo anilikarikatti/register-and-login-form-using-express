@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>register form</title>
+</head>
+<body>
+    
+
+    <form >
+        user name<input type="text" id="username" placeholder="username">
+        password <input type="password" id="password" placeholder="password">
+        <button type="submit">submit</button>
+    </form>
+<script>
+
+    let btn = document.querySelector('button');
+    btn.onclcik = get_data;
+    async function get_data(){
+        let username  =await document.querySelector('username').value;
+        let password = await document.querySelector('password').value;
+
+        let result  = await fetch('/registerUser',{
+            method:"POST",
+            header:{
+                "Content-type":"application/json"
+            },
+            body:{
+                username,
+                password
+            }
+        }).then((res) => res.json())
+        console.log(result);
+    }
+</script>
+</body>
+</html>
